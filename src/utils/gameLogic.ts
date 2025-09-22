@@ -1,8 +1,21 @@
 import type { Iterator, GuessResult } from '../types/Iterator';
 
 export const generateRandomIterator = (iterators: Iterator[]): Iterator => {
-  const randomIndex = Math.floor(Math.random() * iterators.length);
-  return iterators[randomIndex];
+  // Get current date in YYYY-MM-DD format
+  const today = new Date().toISOString().split('T')[0];
+  
+  // Create a simple hash from the date string
+  let hash = 0;
+  for (let i = 0; i < today.length; i++) {
+    const char = today.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash; // Convert to 32-bit integer
+  }
+  
+  // Use modulo to get a consistent index for today
+  const index = Math.abs(hash) % iterators.length;
+  
+  return iterators[index];
 };
 
 export const evaluateGuess = (guess: string, target: Iterator, allIterators: Iterator[]): GuessResult => {
