@@ -27,7 +27,6 @@ export const parseCSVData = (csvText: string): Iterator[] => {
     cvLastUpdated: row['CV Last updated'] || '',
     yearsOfEducation: parseInt(row['Years of education']) || 0,
     yearsSinceFirstWorkExperience: parseInt(row['Years since first work experience']) || 0,
-    accessRoles: row['Access roles'] ? row['Access roles'].split(',').map((role: string) => role.trim()) : [],
     hasProfileImage: row['Has profile image'] === 'true',
     ownsReferenceProject: row['Owns a reference project'] === 'true',
     readAndUnderstoodPrivacyNotice: row['Read and understood privacy notice'] === 'true',

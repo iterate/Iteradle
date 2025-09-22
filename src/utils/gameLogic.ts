@@ -14,7 +14,7 @@ export const generateRandomIterator = (iterators: Iterator[]): Iterator => {
   
   // Use modulo to get a consistent index for today
   const index = Math.abs(hash) % iterators.length;
-  
+
   return iterators[index];
 };
 
@@ -34,7 +34,6 @@ export const evaluateGuess = (guess: string, target: Iterator, allIterators: Ite
         birthYear: 'incorrect',
         yearsOfEducation: 'incorrect',
         yearsSinceFirstWorkExperience: 'incorrect',
-        accessRoles: 'incorrect',
         hasProfileImage: 'incorrect',
         ownsReferenceProject: 'incorrect',
       }
@@ -56,7 +55,6 @@ export const evaluateGuess = (guess: string, target: Iterator, allIterators: Ite
                        Math.abs(guessedIterator.yearsOfEducation - target.yearsOfEducation) <= 2 ? 'partial' : 'incorrect',
       yearsSinceFirstWorkExperience: guessedIterator.yearsSinceFirstWorkExperience === target.yearsSinceFirstWorkExperience ? 'correct' :
                                     Math.abs(guessedIterator.yearsSinceFirstWorkExperience - target.yearsSinceFirstWorkExperience) <= 3 ? 'partial' : 'incorrect',
-      accessRoles: guessedIterator.accessRoles.some(role => target.accessRoles.includes(role)) ? 'partial' : 'incorrect',
       hasProfileImage: guessedIterator.hasProfileImage === target.hasProfileImage ? 'correct' : 'incorrect',
       ownsReferenceProject: guessedIterator.ownsReferenceProject === target.ownsReferenceProject ? 'correct' : 'incorrect',
     }
@@ -70,7 +68,6 @@ export const getHint = (target: Iterator, hintsUsed: number): string => {
     `This person was born in ${target.birthYear}`,
     `This person has ${target.yearsOfEducation} years of education`,
     `This person has ${target.yearsSinceFirstWorkExperience} years of work experience`,
-    `This person's access roles include: ${target.accessRoles.join(', ')}`,
     `This person ${target.hasProfileImage ? 'has' : 'does not have'} a profile image`,
     `This person ${target.ownsReferenceProject ? 'owns' : 'does not own'} a reference project`,
   ];
