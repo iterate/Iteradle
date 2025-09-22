@@ -17,7 +17,6 @@ export interface Iterator {
   cvLastUpdated: string;
   yearsOfEducation: number;
   yearsSinceFirstWorkExperience: number;
-  accessRoles: string[];
   hasProfileImage: boolean;
   ownsReferenceProject: boolean;
   readAndUnderstoodPrivacyNotice: boolean;
@@ -43,7 +42,6 @@ export interface GuessResult {
     birthYear: 'correct' | 'incorrect' | 'partial' | 'too-high' | 'too-low';
     yearsOfEducation: 'correct' | 'incorrect' | 'partial';
     yearsSinceFirstWorkExperience: 'correct' | 'incorrect' | 'partial';
-    accessRoles: 'correct' | 'incorrect' | 'partial';
     hasProfileImage: 'correct' | 'incorrect' | 'partial';
     ownsReferenceProject: 'correct' | 'incorrect' | 'partial';
   };
