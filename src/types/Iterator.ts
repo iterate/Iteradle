@@ -4,10 +4,9 @@ export interface Iterator {
   email: string;
   phoneNumber: string;
   birthYear: number;
-  country: string;
   gender: string;
   yearsOfEducation: number;
-  experience: number;
+  experience: number | null;
 }
 
 export interface GameState {

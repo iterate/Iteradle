@@ -53,6 +53,7 @@ export const evaluateGuess = (guess: string, target: Iterator, allIterators: Ite
                        Math.abs(guessedIterator.yearsOfEducation - target.yearsOfEducation) <= 2 ? 'partial' : 
                        guessedIterator.yearsOfEducation > target.yearsOfEducation ? 'too-high' : 'too-low',
       experience: guessedIterator.experience === target.experience ? 'correct' :
+                 guessedIterator.experience === null || target.experience === null ? 'incorrect' :
                  Math.abs(guessedIterator.experience - target.experience) <= 3 ? 'partial' :
                  guessedIterator.experience > target.experience ? 'too-high' : 'too-low',
     }
@@ -65,7 +66,7 @@ export const getHint = (target: Iterator, hintsUsed: number): string => {
     `This person is ${target.gender.toLowerCase()}`,
     `This person was born in ${target.birthYear}`,
     `This person has ${target.yearsOfEducation} years of education`,
-    `This person has ${target.experience} years of work experience`,
+    `This person has ${target.experience === null ? 'N/A' : target.experience} years of work experience`,
   ];
 
   return hints[hintsUsed] || 'No more hints available!';

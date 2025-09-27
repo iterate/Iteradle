@@ -406,7 +406,9 @@ const IteradleGame: React.FC = () => {
                               break;
                             case "experience":
                               displayValue =
-                                guessedIterator.experience.toString();
+                                guessedIterator.experience === null
+                                  ? "N/A"
+                                  : guessedIterator.experience.toString();
                               break;
                             default:
                               displayValue = getFeedbackDisplay(key, value);
