@@ -30,7 +30,6 @@ export const evaluateGuess = (guess: string, target: Iterator, allIterators: Ite
       feedback: {
         name: 'incorrect',
         title: 'incorrect',
-        department: 'incorrect',
         gender: 'incorrect',
         birthYear: 'incorrect',
         yearsOfEducation: 'incorrect',
@@ -46,7 +45,6 @@ export const evaluateGuess = (guess: string, target: Iterator, allIterators: Ite
     feedback: {
       name: guessedIterator.name === target.name ? 'correct' : 'incorrect',
       title: guessedIterator.title === target.title ? 'correct' : 'incorrect',
-      department: guessedIterator.department === target.department ? 'correct' : 'incorrect',
       gender: guessedIterator.gender === target.gender ? 'correct' : 'incorrect',
       birthYear: guessedIterator.birthYear === target.birthYear ? 'correct' : 
                  Math.abs(guessedIterator.birthYear - target.birthYear) <= 5 ? 'partial' : 
@@ -64,7 +62,6 @@ export const evaluateGuess = (guess: string, target: Iterator, allIterators: Ite
 export const getHint = (target: Iterator, hintsUsed: number): string => {
   const hints = [
     `This person's title is: ${target.title}`,
-    `This person works in the ${target.department} department`,
     `This person is ${target.gender.toLowerCase()}`,
     `This person was born in ${target.birthYear}`,
     `This person has ${target.yearsOfEducation} years of education`,

@@ -4,7 +4,6 @@ export interface Iterator {
   email: string;
   phoneNumber: string;
   birthYear: number;
-  department: string;
   country: string;
   gender: string;
   yearsOfEducation: number;
@@ -27,7 +26,6 @@ export interface GuessResult {
   feedback: {
     name: 'correct' | 'incorrect' | 'partial';
     title: 'correct' | 'incorrect' | 'partial';
-    department: 'correct' | 'incorrect' | 'partial';
     gender: 'correct' | 'incorrect' | 'partial';
     birthYear: 'correct' | 'incorrect' | 'partial' | 'too-high' | 'too-low';
     yearsOfEducation: 'correct' | 'incorrect' | 'partial' | 'too-high' | 'too-low';

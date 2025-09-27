@@ -14,7 +14,6 @@ export const parseCSVData = (csvText: string): Iterator[] => {
     email: row['Email'] || '',
     phoneNumber: row['Phone Number'] || '',
     birthYear: parseInt(row['Birth Year']) || 0,
-    department: row['Department'] || '',
     country: row['Country'] || '',
     gender: row['Gender'] || '',
     yearsOfEducation: parseInt(row['Years of education']) || 0,
