@@ -1,25 +1,14 @@
 export interface Iterator {
   name: string;
-  nameMultilang: string;
   title: string;
   email: string;
-  upn: string;
-  externalUserId: string;
-  cvPartnerUserId: string;
-  cvPartnerCvId: string;
   phoneNumber: string;
-  landline: string;
   birthYear: number;
   department: string;
   country: string;
-  userCreatedAt: string;
-  cvLastUpdatedByOwner: string;
-  cvLastUpdated: string;
+  gender: string;
   yearsOfEducation: number;
   yearsSinceFirstWorkExperience: number;
-  hasProfileImage: boolean;
-  ownsReferenceProject: boolean;
-  readAndUnderstoodPrivacyNotice: boolean;
 }
 
 export interface GameState {
@@ -39,10 +28,9 @@ export interface GuessResult {
     name: 'correct' | 'incorrect' | 'partial';
     title: 'correct' | 'incorrect' | 'partial';
     department: 'correct' | 'incorrect' | 'partial';
+    gender: 'correct' | 'incorrect' | 'partial';
     birthYear: 'correct' | 'incorrect' | 'partial' | 'too-high' | 'too-low';
     yearsOfEducation: 'correct' | 'incorrect' | 'partial';
     yearsSinceFirstWorkExperience: 'correct' | 'incorrect' | 'partial';
-    hasProfileImage: 'correct' | 'incorrect' | 'partial';
-    ownsReferenceProject: 'correct' | 'incorrect' | 'partial';
   };
 }
