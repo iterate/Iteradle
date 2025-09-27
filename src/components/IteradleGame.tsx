@@ -187,27 +187,22 @@ const IteradleGame: React.FC = () => {
     }
   };
 
-  const getFeedbackDisplay = (key: string, value: string) => {
-    if (
-      key === "birthYear" ||
-      key === "yearsOfEducation" ||
-      key === "experience"
-    ) {
-      switch (value) {
-        case "correct":
-          return "✓";
-        case "partial":
-          return "~";
-        case "too-high":
-          return "↑";
-        case "too-low":
-          return "↓";
-        case "incorrect":
-          return "✗";
-        default:
-          return value;
-      }
+  const getFeedbackDisplay = (value: string) => {
+    switch (value) {
+      case "correct":
+        return "✓";
+      case "partial":
+        return "~";
+      case "too-high":
+        return "↑";
+      case "too-low":
+        return "↓";
+      case "incorrect":
+        return "✗";
+      default:
+        return value;
     }
+
     return value;
   };
 
@@ -226,7 +221,7 @@ const IteradleGame: React.FC = () => {
       fontFamily='"Press Start 2P", monospace'
       fontSize="12px"
     >
-      <Container maxW="container.xl" py={8}>
+      <Container maxW="90%" py={8}>
         <VStack spacing={8}>
           <Heading size="2xl" textAlign="center" color="blue.600">
             Iteradle
@@ -411,10 +406,10 @@ const IteradleGame: React.FC = () => {
                                   : guessedIterator.experience.toString();
                               break;
                             default:
-                              displayValue = getFeedbackDisplay(key, value);
+                              displayValue = getFeedbackDisplay(value);
                           }
                         } else {
-                          displayValue = getFeedbackDisplay(key, value);
+                          displayValue = getFeedbackDisplay(value);
                         }
 
                         return (
@@ -428,7 +423,7 @@ const IteradleGame: React.FC = () => {
                               :
                             </Text>
                             <Badge colorScheme={getFeedbackColor(value as any)}>
-                              {displayValue} {getFeedbackDisplay(key, value)}
+                              {displayValue} {getFeedbackDisplay(value)}
                             </Badge>
                           </GridItem>
                         );
