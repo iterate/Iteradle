@@ -374,21 +374,63 @@ const IteradleGame: React.FC = () => {
                       templateColumns="repeat(auto-fit, minmax(200px, 1fr))"
                       gap={2}
                     >
-                      {Object.entries(result.feedback).map(([key, value]) => (
-                        <GridItem key={key}>
-                          <Text fontSize="sm" color="gray.600">
-                            {key
-                              .replace(/([A-Z])/g, " $1")
-                              .trim()
-                              .toLowerCase()
-                              .replace(/^./, (c) => c.toUpperCase())}
-                            :
-                          </Text>
-                          <Badge colorScheme={getFeedbackColor(value as any)}>
-                            {getFeedbackDisplay(key, value)}
-                          </Badge>
-                        </GridItem>
-                      ))}
+                      {Object.entries(result.feedback).map(([key, value]) => {
+                        // Find the guessed iterator to get the actual values
+                        const guessedIterator = iterators.find(
+                          (iterator) =>
+                            iterator.name.toLowerCase() ===
+                              gameState.guesses[index].toLowerCase() ||
+                            iterator.email.toLowerCase() ===
+                              gameState.guesses[index].toLowerCase()
+                        );
+
+                        let displayValue = "";
+                        if (guessedIterator) {
+                          switch (key) {
+                            case "name":
+                              displayValue = guessedIterator.name;
+                              break;
+                            case "title":
+                              displayValue = guessedIterator.title;
+                              break;
+                            case "gender":
+                              displayValue = guessedIterator.gender;
+                              break;
+                            case "birthYear":
+                              displayValue =
+                                guessedIterator.birthYear.toString();
+                              break;
+                            case "yearsOfEducation":
+                              displayValue =
+                                guessedIterator.yearsOfEducation.toString();
+                              break;
+                            case "experience":
+                              displayValue =
+                                guessedIterator.experience.toString();
+                              break;
+                            default:
+                              displayValue = getFeedbackDisplay(key, value);
+                          }
+                        } else {
+                          displayValue = getFeedbackDisplay(key, value);
+                        }
+
+                        return (
+                          <GridItem key={key}>
+                            <Text fontSize="sm" color="gray.600">
+                              {key
+                                .replace(/([A-Z])/g, " $1")
+                                .trim()
+                                .toLowerCase()
+                                .replace(/^./, (c) => c.toUpperCase())}
+                              :
+                            </Text>
+                            <Badge colorScheme={getFeedbackColor(value as any)}>
+                              {displayValue} {getFeedbackDisplay(key, value)}
+                            </Badge>
+                          </GridItem>
+                        );
+                      })}
                     </Grid>
                   </Box>
                 ))}
