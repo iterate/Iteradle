@@ -18,7 +18,7 @@ export const parseCSVData = (csvText: string): Iterator[] => {
     country: row['Country'] || '',
     gender: row['Gender'] || '',
     yearsOfEducation: parseInt(row['Years of education']) || 0,
-    yearsSinceFirstWorkExperience: parseInt(row['Years since first work experience']) || 0,
+    experience: parseInt(row['Experience']) || 0,
   }));
 };
 

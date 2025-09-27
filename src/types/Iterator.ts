@@ -8,7 +8,7 @@ export interface Iterator {
   country: string;
   gender: string;
   yearsOfEducation: number;
-  yearsSinceFirstWorkExperience: number;
+  experience: number;
 }
 
 export interface GameState {
@@ -30,7 +30,7 @@ export interface GuessResult {
     department: 'correct' | 'incorrect' | 'partial';
     gender: 'correct' | 'incorrect' | 'partial';
     birthYear: 'correct' | 'incorrect' | 'partial' | 'too-high' | 'too-low';
-    yearsOfEducation: 'correct' | 'incorrect' | 'partial';
-    yearsSinceFirstWorkExperience: 'correct' | 'incorrect' | 'partial';
+    yearsOfEducation: 'correct' | 'incorrect' | 'partial' | 'too-high' | 'too-low';
+    experience: 'correct' | 'incorrect' | 'partial' | 'too-high' | 'too-low';
   };
 }

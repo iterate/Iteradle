@@ -188,7 +188,11 @@ const IteradleGame: React.FC = () => {
   };
 
   const getFeedbackDisplay = (key: string, value: string) => {
-    if (key === "birthYear") {
+    if (
+      key === "birthYear" ||
+      key === "yearsOfEducation" ||
+      key === "experience"
+    ) {
       switch (value) {
         case "correct":
           return "✓";
@@ -373,7 +377,12 @@ const IteradleGame: React.FC = () => {
                       {Object.entries(result.feedback).map(([key, value]) => (
                         <GridItem key={key}>
                           <Text fontSize="sm" color="gray.600">
-                            {key.replace(/([A-Z])/g, " $1").trim()}:
+                            {key
+                              .replace(/([A-Z])/g, " $1")
+                              .trim()
+                              .toLowerCase()
+                              .replace(/^./, (c) => c.toUpperCase())}
+                            :
                           </Text>
                           <Badge colorScheme={getFeedbackColor(value as any)}>
                             {getFeedbackDisplay(key, value)}

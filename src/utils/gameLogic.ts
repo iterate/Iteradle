@@ -34,7 +34,7 @@ export const evaluateGuess = (guess: string, target: Iterator, allIterators: Ite
         gender: 'incorrect',
         birthYear: 'incorrect',
         yearsOfEducation: 'incorrect',
-        yearsSinceFirstWorkExperience: 'incorrect',
+        experience: 'incorrect',
       }
     };
   }
@@ -51,10 +51,12 @@ export const evaluateGuess = (guess: string, target: Iterator, allIterators: Ite
       birthYear: guessedIterator.birthYear === target.birthYear ? 'correct' : 
                  Math.abs(guessedIterator.birthYear - target.birthYear) <= 5 ? 'partial' : 
                  guessedIterator.birthYear > target.birthYear ? 'too-high' : 'too-low',
-      yearsOfEducation: guessedIterator.yearsOfEducation === target.yearsOfEducation ? 'correct' :
-                       Math.abs(guessedIterator.yearsOfEducation - target.yearsOfEducation) <= 2 ? 'partial' : 'incorrect',
-      yearsSinceFirstWorkExperience: guessedIterator.yearsSinceFirstWorkExperience === target.yearsSinceFirstWorkExperience ? 'correct' :
-                                    Math.abs(guessedIterator.yearsSinceFirstWorkExperience - target.yearsSinceFirstWorkExperience) <= 3 ? 'partial' : 'incorrect',
+      yearsOfEducation: guessedIterator.yearsOfEducation === target.yearsOfEducation ? 'correct' : 
+                       Math.abs(guessedIterator.yearsOfEducation - target.yearsOfEducation) <= 2 ? 'partial' : 
+                       guessedIterator.yearsOfEducation > target.yearsOfEducation ? 'too-high' : 'too-low',
+      experience: guessedIterator.experience === target.experience ? 'correct' :
+                 Math.abs(guessedIterator.experience - target.experience) <= 3 ? 'partial' :
+                 guessedIterator.experience > target.experience ? 'too-high' : 'too-low',
     }
   };
 };
@@ -66,7 +68,7 @@ export const getHint = (target: Iterator, hintsUsed: number): string => {
     `This person is ${target.gender.toLowerCase()}`,
     `This person was born in ${target.birthYear}`,
     `This person has ${target.yearsOfEducation} years of education`,
-    `This person has ${target.yearsSinceFirstWorkExperience} years of work experience`,
+    `This person has ${target.experience} years of work experience`,
   ];
 
   return hints[hintsUsed] || 'No more hints available!';
