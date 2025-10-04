@@ -1,48 +1,48 @@
 Name;Title (no);Email;Phone Number;Birth Year;Gender;Years of education;Experience
 Anders Haugeto;Founder, Chief Scientist;haugeto@iterate.no;'+47 950 20 337;1977;Male;5;22
-Andreas Friestad;Utvikler;andreas.friestad@iterate.no;95874615;1996;Male;5;11
+Andreas Friestad;Developer;andreas.friestad@iterate.no;95874615;1996;Male;5;11
 Bendik Skotland Hansen;Designer;bendik@iterate.no;92494973;1991;Male;4;12
-Bjørn Olav Gjørven;Utvikler;bjorn.gjorven@iterate.no;94237848;1989;Male;12;18
-Brede Fritjof Klausen;Utvikler;brede.klausen@iterate.no;40 41 42 55;1997;Male;3;6
+Bjørn Olav Gjørven;Developer;bjorn.gjorven@iterate.no;94237848;1989;Male;12;18
+Brede Fritjof Klausen;Developer;brede.klausen@iterate.no;40 41 42 55;1997;Male;3;6
 Camilla Dahlstrøm;Designer;camilla.dahlstrom@iterate.no;'+47 974 631 32;1993;Female;6;9
 Chris Sadler;Designer ;chris@iterate.no;97663138;1988;Male;3;14
-Eivind Yu Nilsen;Utvikler;eivind.yu.nilsen@iterate.no;90230279;1997;Male;5;6
-Finn Inderhaug Holme;Utvikler;finn@iterate.no;99473957;1991;Male;6;11
+Eivind Yu Nilsen;Developer;eivind.yu.nilsen@iterate.no;90230279;1997;Male;5;6
+Finn Inderhaug Holme;Developer;finn@iterate.no;99473957;1991;Male;6;11
 Fredrik Pettersen;Salgssjef;fredrik@iterate.no;'+47 408 409 67;1968;Male;4;19
-Henrik Glasø Skifjeld;Utvikler;henrikgs@iterate.no;93844501;1990;Male;6;13
-Ida Husby Swendgaard;Utvikler;ida.husby.swendgaard@iterate.no;99433339;1992;Female;5;12
+Henrik Glasø Skifjeld;Developer;henrikgs@iterate.no;93844501;1990;Male;6;13
+Ida Husby Swendgaard;Developer;ida.husby.swendgaard@iterate.no;99433339;1992;Female;5;12
 Irene Solberg;UX-designer;irene.solberg@iterate.no;'+47 971 90 736;1991;Female;7;16
-Ivarr Reyna;Utvikler;ivarr@iterate.no;'+47 476 07 767;1993;Male;8;8
-Jenny Bleken Hellerud;Utvikler;jenny.b.hellerud@iterate.no;97028273;1996;Female;6;5
+Ivarr Reyna;Developer;ivarr@iterate.no;'+47 476 07 767;1993;Male;8;8
+Jenny Bleken Hellerud;Developer;jenny.b.hellerud@iterate.no;97028273;1996;Female;6;5
 Julian Hallen Eriksen;Designer;julian.hallen.eriksen@iterate.no;98626368;1993;Male;6;8
-Karine Gran Vifstad;Utvikler;karine@iterate.no;95080838;1990;Female;7;13
+Karine Gran Vifstad;Developer;karine@iterate.no;95080838;1990;Female;7;13
 Kim Ophus Leskovsky;Investorkontakt, Partner;kim@iterate.no;'+47 950 52 769;1977;Male;1;24
 Lars Henrik Berg-Jensen;Co-founder & CTO;lars.berg-jensen@iterate.no;'+4748299528;1993;Male;5;9
 Line Rosvoll Holmen;Designer;line.rosvoll.holmen@iterate.no;40464790;1992;Female;6;12
-Magnus Reier Rushfeldt;Utvikler;magnus.reier.rushfeldt@iterate.no;48420688;1997;Male;5;6
-Marcus Pettersen Irgens;Utvikler;marcus@iterate.no;48367017;1989;Male;2;7
-Martin Akre Midtsund;Utvikler;martin@iterate.no;416 71 501;1985;Male;6;19
+Magnus Reier Rushfeldt;Developer;magnus.reier.rushfeldt@iterate.no;48420688;1997;Male;5;6
+Marcus Pettersen Irgens;Developer;marcus@iterate.no;48367017;1989;Male;2;7
+Martin Akre Midtsund;Developer;martin@iterate.no;416 71 501;1985;Male;6;19
 Mathias Hov;Produktleder;mathias.hov@iterate.no;47242764;1988;Male;5;16
-natalie@iterate.no;Utvikler;natalie@iterate.no;;;Female;0;N/A
-Natalie Lien;Utvikler;magnlien@iterate.no;'+47 90151279;1987;Female;6;24
-Nils Rugsveen;Utvikler;nils@iterate.no;95876417;1991;Male;5;15
-Oddmund Strømme;Utvikler;oddmunds@iterate.no;41687447;1984;Male;5;18
-Olav Haaland Moseng;Utvikler;olav.moseng@iterate.no;481 94 260;1997;Male;5;6
-Ole Jacob Brunstad;Utvikler;brunstad@iterate.no;91540741;1995;Male;5;6
-Ole Martin Knurvik;Utvikler;ole.martin.knurvik@iterate.no;45230767;1994;Male;5;17
-Ole Schilling Tjensvold;Utvikler;ole@iterate.no;'+47 99 69 06 06;1978;Male;6;21
-Osmund Maheswaran;Utvikler;osmund@iterate.no;957 63 705;1987;Male;6;14
-Pål Andreas Morholmen;Utvikler;pal@iterate.no;47392548;1999;Male;6;7
+natalie@iterate.no;Developer;natalie@iterate.no;;;Female;0;N/A
+Natalie Lien;Developer;magnlien@iterate.no;'+47 90151279;1987;Female;6;24
+Nils Rugsveen;Developer;nils@iterate.no;95876417;1991;Male;5;15
+Oddmund Strømme;Developer;oddmunds@iterate.no;41687447;1984;Male;5;18
+Olav Haaland Moseng;Developer;olav.moseng@iterate.no;481 94 260;1997;Male;5;6
+Ole Jacob Brunstad;Developer;brunstad@iterate.no;91540741;1995;Male;5;6
+Ole Martin Knurvik;Developer;ole.martin.knurvik@iterate.no;45230767;1994;Male;5;17
+Ole Schilling Tjensvold;Developer;ole@iterate.no;'+47 99 69 06 06;1978;Male;6;21
+Osmund Maheswaran;Developer;osmund@iterate.no;957 63 705;1987;Male;6;14
+Pål Andreas Morholmen;Developer;pal@iterate.no;47392548;1999;Male;6;7
 Pernille Wangsholm Holloway;Product Manager;pernille@iterate.no;48299803;1991;Female;7;16
 Peter Lizamore;Produktleder;peter.lizamore@iterate.no;;1987;Male;8;13
-Philip Dahlstrøm;Utvikler;philip.dahlstrom@iterate.no;41454020;1995;Male;5;10
-Pia Lindkjølen;Utvikler;pia@iterate.no;97421726;1991;Female;5;11
-Rakel Heggset ;Utvikler;rakel.heggset@iterate.no;412 68 466;1994;Female;6;5
-Richard Tingstad;Utvikler;richard.tingstad@iterate.no;99164263;1983;Male;5;20
+Philip Dahlstrøm;Developer;philip.dahlstrom@iterate.no;41454020;1995;Male;5;10
+Pia Lindkjølen;Developer;pia@iterate.no;97421726;1991;Female;5;11
+Rakel Heggset ;Developer;rakel.heggset@iterate.no;412 68 466;1994;Female;6;5
+Richard Tingstad;Developer;richard.tingstad@iterate.no;99164263;1983;Male;5;20
 Rune Larsen;Daglig Leder;rune@iterate.no;'+47 917 78 534;1977;Male;7;27
-Sean William Holloway;Utvikler;sean.holloway@iterate.no;98064216;1984;Male;5;14
-Sigve Barstad-Ølnes;Prosjektleder, forretningsutvikler, produktutvikler ;sigve@iterate.no;99586317;1976;Male;13;27
-Stein Kvarud;Utvikler;stein@iterate.no;'+47 916 25 656;1976;Male;4;21
-Stig Bergestad;Utvikler;stigberg@iterate.no;'+47 411 03 515;1978;Male;9;18
+Sean William Holloway;Developer;sean.holloway@iterate.no;98064216;1984;Male;5;14
+Sigve Barstad-Ølnes;Prosjektleder, forretningsDeveloper, produktDeveloper ;sigve@iterate.no;99586317;1976;Male;13;27
+Stein Kvarud;Developer;stein@iterate.no;'+47 916 25 656;1976;Male;4;21
+Stig Bergestad;Developer;stigberg@iterate.no;'+47 411 03 515;1978;Male;9;18
 Synne Mo;Designer;synne.mo@iterate.no;95037687;1984;Female;6;19
-Thomas Rye;Utvikler;thomas.rye@iterate.no;'-4741310683;1999;Male;1;N/A
+Thomas Rye;Developer;thomas.rye@iterate.no;'-4741310683;1999;Male;1;N/A
