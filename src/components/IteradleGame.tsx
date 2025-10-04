@@ -456,7 +456,7 @@ const IteradleGame: React.FC = () => {
                         return (
                           <GridItem
                             key={key}
-                            className={`guess-item ${feedbackColorClass}`}
+                            className={`guess-item ${feedbackColorClass} ${feedbackColorClass}-strong`}
                           >
                             <Text className="guess-item-label">
                               {key

@@ -305,7 +305,8 @@
 /* Alerts */
 .alert {
   border-radius: 8px;
-  background-color: #1a1a1a;
+  background-color: #0084ff !important;
+  box-shadow: 0px 0px 20px 5px #002fff inset;
   border: 1px solid #333333;
   color: #ffffff;
 }
@@ -321,7 +322,7 @@
 }
 
 .alert-description {
-  color: #888888;
+  color: #ffffff;
   font-size: 16px;
   font-weight: 900;
   margin-left: 0.5rem;
@@ -336,7 +337,7 @@
 }
 
 .alert-icon.info {
-  color: #888888;
+  color: #0037ff;
 }
 
 /* Guess Results */
