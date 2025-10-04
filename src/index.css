@@ -1,0 +1,43 @@
+/* Iterate.no inspired styles */
+@keyframes pixelBounce {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(2deg);
+  }
+}
+
+
+/* Make all text elements bold by default */
+* {
+  font-weight: extrabold !important;
+}
+
+/* Override for specific elements that need different weights */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: extrabold !important;
+}
+
+button, input, textarea {
+  font-weight: extrabold !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+

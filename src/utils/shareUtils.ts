@@ -4,7 +4,7 @@ export const generateShareableResult = (
   gameWon: boolean,
   guesses: string[],
   guessResults: GuessResult[],
-  targetIterator: Iterator,
+  _targetIterator: Iterator,
   startTime: number | null,
   endTime: number | null,
   hintsUsed: number

@@ -10,7 +10,6 @@ import {
   Heading,
   Grid,
   GridItem,
-  Badge,
   Alert,
   AlertIcon,
   AlertTitle,
@@ -253,138 +252,310 @@ const IteradleGame: React.FC = () => {
 
   if (loading) {
     return (
-      <Container maxW="container.xl" py={8}>
-        <Text>Loading game...</Text>
-      </Container>
+      <Box
+        minH="100vh"
+        bg="#0a0a0a"
+        fontFamily='"Inter", -apple-system, BlinkMacSystemFont, sans-serif'
+        color="#ffffff"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Text fontSize="18px" color="#888888" fontWeight="extrabold">
+          Loading game...
+        </Text>
+      </Box>
     );
   }
 
   return (
     <Box
       minH="100vh"
-      bg="#87CEEB"
-      fontFamily='"Press Start 2P", monospace'
-      fontSize="12px"
+      bg="#0a0a0a"
+      fontFamily='"Inter", -apple-system, BlinkMacSystemFont, sans-serif'
+      fontSize="16px"
+      color="#ffffff"
     >
+      {/* Header Navigation */}
+      <Box
+        w="full"
+        borderBottom="1px solid #333333"
+        py={4}
+        px={{ base: 4, md: 8 }}
+      >
+        <Container maxW="container.xl">
+          <HStack justify="space-between" align="center">
+            <Text
+              fontSize={{ base: "20px", md: "24px" }}
+              fontWeight="extrabold"
+              color="#ffffff"
+            >
+              Iteradle
+            </Text>
+            <HStack
+              spacing={{ base: 4, md: 8 }}
+              fontSize={{ base: "14px", md: "16px" }}
+              fontWeight="extrabold"
+              color="#888888"
+              display={{ base: "none", lg: "flex" }}
+            >
+              <a
+                href="https://iterate.no/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: "none" }}
+              >
+                <Text _hover={{ color: "#ffffff", cursor: "pointer" }}>
+                  Om oss
+                </Text>
+              </a>
+            </HStack>
+          </HStack>
+        </Container>
+      </Box>
+
       <Container maxW="90%" py={8}>
         <VStack spacing={8}>
-          <Heading size="2xl" textAlign="center" color="blue.600">
-            Iteradle
-          </Heading>
-          <Text textAlign="center" fontSize="lg" color="gray.600">
-            Guess the Iterate employee! Use hints wisely.
-          </Text>
-
-          {/* Controls */}
-          <HStack spacing={4} w="full" maxW="md">
-            <Box position="relative" w="full">
-              <Input
-                placeholder="Type to search employees..."
-                value={searchQuery}
-                onChange={handleSearchChange}
-                onFocus={() => setIsOpen(true)}
-                onBlur={() => setTimeout(() => setIsOpen(false), 200)}
-                isDisabled={gameState.gameWon || gameState.gameLost}
-                bg="white"
-                borderColor="black"
-                borderWidth="3px"
-                borderRadius="8px"
-                fontSize="10px"
-                minW="300px"
-              />
-              {isOpen && filteredEmployees.length > 0 && (
+          <VStack spacing={6} align="center">
+            {/* Pixelated Creature */}
+            <Box
+              w="80px"
+              h="80px"
+              borderRadius="50%"
+              border="2px solid #333333"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              mb={4}
+              position="relative"
+              overflow="hidden"
+            >
+              {/* Simple pixelated creature */}
+              <Box
+                w="40px"
+                h="40px"
+                bg="#00ff88"
+                borderRadius="4px"
+                position="relative"
+                animation="pixelBounce 2s ease-in-out infinite"
+              >
+                {/* Eyes */}
                 <Box
                   position="absolute"
-                  top="100%"
-                  left={0}
-                  right={0}
-                  zIndex={1000}
-                  bg="white"
-                  border="3px solid black"
-                  borderTop="none"
-                  borderRadius="0 0 8px 8px"
-                  maxH="200px"
-                  overflowY="auto"
-                  boxShadow="lg"
-                >
-                  {filteredEmployees.slice(0, 10).map((iterator) => (
-                    <Box
-                      key={iterator.name}
-                      px={3}
-                      py={2}
-                      cursor="pointer"
-                      _hover={{ bg: "gray.100" }}
-                      onClick={() => handleEmployeeSelect(iterator.name)}
-                      fontSize="10px"
-                      fontFamily='"Press Start 2P", monospace'
-                    >
-                      {iterator.name}
-                    </Box>
-                  ))}
-                </Box>
-              )}
+                  top="8px"
+                  left="8px"
+                  w="4px"
+                  h="4px"
+                  bg="#0a0a0a"
+                  borderRadius="50%"
+                />
+                <Box
+                  position="absolute"
+                  top="8px"
+                  right="8px"
+                  w="4px"
+                  h="4px"
+                  bg="#0a0a0a"
+                  borderRadius="50%"
+                />
+              </Box>
             </Box>
-            <Button
-              onClick={handleGuess}
-              bg="blue.500"
-              color="white"
-              borderColor="black"
-              borderWidth="3px"
-              borderRadius="8px"
-              fontSize="10px"
-              isDisabled={
-                !gameState.currentGuess.trim() ||
-                gameState.gameWon ||
-                gameState.gameLost
-              }
-            >
-              Guess
-            </Button>
-          </HStack>
 
-          {/* Hints */}
-          <HStack spacing={4}>
-            <Button
-              onClick={handleHint}
-              variant="outline"
-              colorScheme="orange"
-              borderWidth="3px"
-              isDisabled={
-                gameState.hintsUsed >= gameState.maxHints ||
-                gameState.gameWon ||
-                gameState.gameLost
-              }
+            <Text
+              textAlign="center"
+              fontSize={{ base: "20px", md: "24px" }}
+              color="#ffffff"
+              fontWeight="extrabold"
+              maxW="1200px"
+              lineHeight="1.4"
+              px={4}
             >
-              Get Hint ({gameState.maxHints - gameState.hintsUsed} left)
-            </Button>
-            <Button
-              onClick={resetGame}
-              variant="outline"
-              colorScheme="purple"
-              borderWidth="3px"
-            >
-              New Game
-            </Button>
-          </HStack>
+              Guess the Iterate employee! Use hints wisely.
+            </Text>
+          </VStack>
+
+          {/* Controls */}
+          <VStack spacing={4} w="full" maxW="md" px={4}>
+            <HStack spacing={4} w="full">
+              <Box position="relative" w="full">
+                <Input
+                  placeholder="Type to search employees..."
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  onFocus={() => setIsOpen(true)}
+                  onBlur={() => setTimeout(() => setIsOpen(false), 200)}
+                  isDisabled={gameState.gameWon || gameState.gameLost}
+                  bg="#1a1a1a"
+                  borderColor="#333333"
+                  borderWidth="1px"
+                  borderRadius="8px"
+                  fontSize={{ base: "14px", md: "16px" }}
+                  fontWeight="extrabold"
+                  color="#ffffff"
+                  _placeholder={{ color: "#666666" }}
+                  _focus={{
+                    borderColor: "#ffffff",
+                    boxShadow: "0 0 0 1px #ffffff",
+                  }}
+                  _hover={{ borderColor: "#555555" }}
+                  minW={{ base: "250px", md: "300px" }}
+                  h={{ base: "44px", md: "48px" }}
+                />
+                {isOpen && filteredEmployees.length > 0 && (
+                  <Box
+                    position="absolute"
+                    top="100%"
+                    left={0}
+                    right={0}
+                    zIndex={1000}
+                    bg="#1a1a1a"
+                    border="1px solid #333333"
+                    borderTop="none"
+                    borderRadius="0 0 8px 8px"
+                    maxH="200px"
+                    overflowY="auto"
+                    boxShadow="0 8px 32px rgba(0,0,0,0.5)"
+                  >
+                    {filteredEmployees.slice(0, 10).map((iterator) => (
+                      <Box
+                        key={iterator.name}
+                        px={3}
+                        py={3}
+                        cursor="pointer"
+                        _hover={{ bg: "#333333" }}
+                        onClick={() => handleEmployeeSelect(iterator.name)}
+                        fontSize="16px"
+                        fontWeight="extrabold"
+                        color="#ffffff"
+                        fontFamily='"Inter", -apple-system, BlinkMacSystemFont, sans-serif'
+                      >
+                        {iterator.name}
+                      </Box>
+                    ))}
+                  </Box>
+                )}
+              </Box>
+              <Button
+                onClick={() => {
+                  handleGuess();
+                  setSearchQuery("");
+                }}
+                bg="#ffffff"
+                color="#0a0a0a"
+                borderColor="transparent"
+                borderWidth="1px"
+                borderRadius="8px"
+                fontSize={{ base: "14px", md: "16px" }}
+                fontWeight="extrabold"
+                h={{ base: "44px", md: "48px" }}
+                px={{ base: 4, md: 6 }}
+                _hover={{ bg: "#f0f0f0" }}
+                _active={{ bg: "#e0e0e0" }}
+                _disabled={{
+                  bg: "#333333",
+                  color: "#666666",
+                  cursor: "not-allowed",
+                }}
+                isDisabled={
+                  !gameState.currentGuess.trim() ||
+                  gameState.gameWon ||
+                  gameState.gameLost
+                }
+              >
+                Guess
+              </Button>
+            </HStack>
+
+            {/* Hints */}
+            <HStack spacing={4} w="full" justify="center" flexWrap="wrap">
+              <Button
+                onClick={handleHint}
+                bg="transparent"
+                color="#888888"
+                borderColor="#333333"
+                borderWidth="1px"
+                borderRadius="8px"
+                fontSize={{ base: "14px", md: "16px" }}
+                fontWeight="extrabold"
+                h={{ base: "44px", md: "48px" }}
+                px={{ base: 4, md: 6 }}
+                _hover={{ bg: "#1a1a1a", borderColor: "#555555" }}
+                _disabled={{ opacity: 0.5, cursor: "not-allowed" }}
+                isDisabled={
+                  gameState.hintsUsed >= gameState.maxHints ||
+                  gameState.gameWon ||
+                  gameState.gameLost
+                }
+              >
+                Get Hint ({gameState.maxHints - gameState.hintsUsed} left)
+              </Button>
+              <Button
+                onClick={resetGame}
+                bg="transparent"
+                color="#888888"
+                borderColor="#333333"
+                borderWidth="1px"
+                borderRadius="8px"
+                fontSize={{ base: "14px", md: "16px" }}
+                fontWeight="extrabold"
+                h={{ base: "44px", md: "48px" }}
+                px={{ base: 4, md: 6 }}
+                _hover={{ bg: "#1a1a1a", borderColor: "#555555" }}
+              >
+                New Game
+              </Button>
+            </HStack>
+          </VStack>
 
           {currentHint && (
-            <Alert status="info" borderRadius="md">
-              <AlertIcon />
-              <AlertTitle>Hint:</AlertTitle>
-              <AlertDescription ml={2}>{currentHint}</AlertDescription>
+            <Alert
+              status="info"
+              borderRadius="8px"
+              bg="#1a1a1a"
+              border="1px solid #333333"
+              color="#ffffff"
+            >
+              <AlertIcon color="#888888" />
+              <AlertTitle
+                color="#ffffff"
+                fontSize="16px"
+                fontWeight="extrabold"
+              >
+                Hint:
+              </AlertTitle>
+              <AlertDescription
+                ml={2}
+                color="#888888"
+                fontSize="16px"
+                fontWeight="extrabold"
+              >
+                {currentHint}
+              </AlertDescription>
             </Alert>
           )}
 
           {(gameState.gameWon || gameState.gameLost) && (
             <Alert
               status={gameState.gameWon ? "success" : "error"}
-              borderRadius="md"
+              borderRadius="8px"
+              bg="#1a1a1a"
+              border="1px solid #333333"
+              color="#ffffff"
             >
-              <AlertIcon />
-              <AlertTitle>
+              <AlertIcon color={gameState.gameWon ? "#00ff88" : "#ff4444"} />
+              <AlertTitle
+                color="#ffffff"
+                fontSize="18px"
+                fontWeight="extrabold"
+              >
                 {gameState.gameWon ? "You Won!" : "Game Over!"}
               </AlertTitle>
-              <AlertDescription ml={2}>
+              <AlertDescription
+                ml={2}
+                color="#888888"
+                fontSize="16px"
+                fontWeight="extrabold"
+              >
                 {gameState.gameWon
                   ? `Correct! The answer was ${gameState.targetIterator?.name}.`
                   : `The correct answer was ${gameState.targetIterator?.name}.`}
@@ -392,10 +563,18 @@ const IteradleGame: React.FC = () => {
               {(gameState.gameWon || gameState.gameLost) && (
                 <Button
                   onClick={handleShare}
-                  variant="solid"
-                  colorScheme="green"
-                  borderWidth="3px"
+                  bg="#ffffff"
+                  color="#0a0a0a"
+                  borderColor="transparent"
+                  borderWidth="1px"
+                  borderRadius="8px"
+                  fontSize="16px"
+                  fontWeight="extrabold"
+                  h="40px"
+                  px={4}
                   ml="auto"
+                  _hover={{ bg: "#f0f0f0" }}
+                  _active={{ bg: "#e0e0e0" }}
                 >
                   Share Results
                 </Button>
@@ -404,26 +583,42 @@ const IteradleGame: React.FC = () => {
           )}
 
           {guessResults.length > 0 && (
-            <Box w="full">
-              <Heading size="md" mb={4}>
+            <Box w="full" maxW="1200px" px={4}>
+              <Heading
+                size="md"
+                mb={6}
+                color="#ffffff"
+                fontWeight="extrabold"
+                fontSize={{ base: "18px", md: "20px" }}
+                textAlign="center"
+              >
                 Your Guesses:
               </Heading>
-              <VStack spacing={2} align="stretch">
+              <VStack spacing={{ base: 3, md: 4 }} align="stretch">
                 {guessResults.map((result, index) => (
                   <Box
                     key={index}
-                    p={4}
-                    border="1px"
-                    borderColor="gray.200"
-                    borderRadius="md"
-                    bg="gray.50"
+                    p={{ base: 3, md: 6 }}
+                    border="1px solid #333333"
+                    borderRadius="12px"
+                    bg="#1a1a1a"
+                    transition="all 0.2s ease"
+                    _hover={{ bg: "#222222" }}
                   >
-                    <Text fontWeight="bold" mb={2}>
+                    <Text
+                      fontWeight="extrabold"
+                      mb={{ base: 3, md: 4 }}
+                      color="#ffffff"
+                      fontSize={{ base: "16px", md: "18px" }}
+                    >
                       Guess {index + 1}: {gameState.guesses[index]}
                     </Text>
                     <Grid
-                      templateColumns="repeat(auto-fit, minmax(200px, 1fr))"
-                      gap={2}
+                      templateColumns={{
+                        base: "repeat(2, 1fr)",
+                        md: "repeat(auto-fit, minmax(150px, 1fr))",
+                      }}
+                      gap={{ base: 3, md: 6 }}
                     >
                       {Object.entries(result.feedback).map(([key, value]) => {
                         // Find the guessed iterator to get the actual values
@@ -469,8 +664,30 @@ const IteradleGame: React.FC = () => {
                         }
 
                         return (
-                          <GridItem key={key}>
-                            <Text fontSize="sm" color="gray.600">
+                          <GridItem
+                            key={key}
+                            bg={
+                              getFeedbackColor(value as any) === "green"
+                                ? "#00ff88"
+                                : getFeedbackColor(value as any) === "yellow"
+                                ? "#ffaa00"
+                                : getFeedbackColor(value as any) === "red"
+                                ? "#ff4444"
+                                : getFeedbackColor(value as any) === "orange"
+                                ? "#ff8800"
+                                : getFeedbackColor(value as any) === "purple"
+                                ? "#aa44ff"
+                                : "#333333"
+                            }
+                            borderRadius="8px"
+                            p={{ base: 2, md: 3 }}
+                          >
+                            <Text
+                              fontSize={{ base: "12px", md: "14px" }}
+                              color="#0a0a0a"
+                              mb={{ base: 1, md: 2 }}
+                              fontWeight="extrabold"
+                            >
                               {key
                                 .replace(/([A-Z])/g, " $1")
                                 .trim()
@@ -478,9 +695,13 @@ const IteradleGame: React.FC = () => {
                                 .replace(/^./, (c) => c.toUpperCase())}
                               :
                             </Text>
-                            <Badge colorScheme={getFeedbackColor(value as any)}>
+                            <Text
+                              fontSize={{ base: "12px", md: "14px" }}
+                              color="#0a0a0a"
+                              fontWeight="extrabold"
+                            >
                               {displayValue} {getFeedbackDisplay(value)}
-                            </Badge>
+                            </Text>
                           </GridItem>
                         );
                       })}
@@ -491,8 +712,14 @@ const IteradleGame: React.FC = () => {
             </Box>
           )}
 
-          <Box textAlign="center" color="gray.600">
-            <Text>
+          <Box
+            textAlign="center"
+            color="#888888"
+            fontSize={{ base: "14px", md: "16px" }}
+            fontWeight="extrabold"
+            px={4}
+          >
+            <Text mb={2}>
               Guesses: {gameState.guesses.length}/{gameState.maxGuesses}
             </Text>
             <Text>
