@@ -18,6 +18,8 @@ export interface GameState {
   gameLost: boolean;
   hintsUsed: number;
   maxHints: number;
+  startTime: number | null;
+  endTime: number | null;
 }
 
 export interface GuessResult {

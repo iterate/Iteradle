@@ -24,6 +24,7 @@ import {
   generateRandomIterator,
   getHint,
 } from "../utils/gameLogic";
+import { generateShareableResult, copyToClipboard } from "../utils/shareUtils";
 
 const IteradleGame: React.FC = () => {
   const [iterators, setIterators] = useState<Iterator[]>([]);
@@ -36,6 +37,8 @@ const IteradleGame: React.FC = () => {
     gameLost: false,
     hintsUsed: 0,
     maxHints: 3,
+    startTime: null,
+    endTime: null,
   });
   const [guessResults, setGuessResults] = useState<GuessResult[]>([]);
   const [currentHint, setCurrentHint] = useState<string>("");
@@ -51,7 +54,11 @@ const IteradleGame: React.FC = () => {
         setIterators(data);
         if (data.length > 0) {
           const target = generateRandomIterator(data);
-          setGameState((prev) => ({ ...prev, targetIterator: target }));
+          setGameState((prev) => ({
+            ...prev,
+            targetIterator: target,
+            startTime: Date.now(),
+          }));
         }
       } catch (error) {
         console.error("Error initializing game:", error);
@@ -90,6 +97,7 @@ const IteradleGame: React.FC = () => {
     const isCorrect = result.isCorrect;
     const gameWon = isCorrect;
     const gameLost = !isCorrect && newGuesses.length >= gameState.maxGuesses;
+    const endTime = gameWon || gameLost ? Date.now() : null;
 
     setGameState((prev) => ({
       ...prev,
@@ -97,6 +105,7 @@ const IteradleGame: React.FC = () => {
       guesses: newGuesses,
       gameWon,
       gameLost,
+      endTime,
     }));
 
     if (isCorrect) {
@@ -160,11 +169,47 @@ const IteradleGame: React.FC = () => {
         gameLost: false,
         hintsUsed: 0,
         maxHints: 3,
+        startTime: Date.now(),
+        endTime: null,
       });
       setGuessResults([]);
       setCurrentHint("");
       setSearchQuery("");
       setIsOpen(false);
+    }
+  };
+
+  const handleShare = async () => {
+    if (!gameState.targetIterator) return;
+
+    const shareText = generateShareableResult(
+      gameState.gameWon,
+      gameState.guesses,
+      guessResults,
+      gameState.targetIterator,
+      gameState.startTime,
+      gameState.endTime,
+      gameState.hintsUsed
+    );
+
+    const success = await copyToClipboard(shareText);
+
+    if (success) {
+      toast({
+        title: "Results copied!",
+        description: "Your game results have been copied to clipboard.",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+    } else {
+      toast({
+        title: "Copy failed",
+        description: "Failed to copy results to clipboard.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     }
   };
 
@@ -344,6 +389,17 @@ const IteradleGame: React.FC = () => {
                   ? `Correct! The answer was ${gameState.targetIterator?.name}.`
                   : `The correct answer was ${gameState.targetIterator?.name}.`}
               </AlertDescription>
+              {(gameState.gameWon || gameState.gameLost) && (
+                <Button
+                  onClick={handleShare}
+                  variant="solid"
+                  colorScheme="green"
+                  borderWidth="3px"
+                  ml="auto"
+                >
+                  Share Results
+                </Button>
+              )}
             </Alert>
           )}
 
