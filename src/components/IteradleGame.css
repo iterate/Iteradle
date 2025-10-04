@@ -1,0 +1,477 @@
+/* IteradleGame Component Styles */
+
+/* Loading Screen */
+.loading-container {
+  min-height: 100vh;
+  background-color: #0a0a0a;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-text {
+  font-size: 18px;
+  color: #888888;
+  font-weight: 900;
+}
+
+/* Main Container */
+.main-container {
+  min-height: 100vh;
+  background-color: #0a0a0a;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+/* Header Navigation */
+.header {
+  width: 100%;
+  border-bottom: 1px solid #333333;
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding: 1rem 2rem;
+  }
+}
+
+.header-title {
+  font-size: 20px;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+@media (min-width: 768px) {
+  .header-title {
+    font-size: 24px;
+  }
+}
+
+.header-links {
+  display: none;
+  font-size: 14px;
+  font-weight: 900;
+  color: #888888;
+}
+
+@media (min-width: 1024px) {
+  .header-links {
+    display: flex;
+  }
+}
+
+@media (min-width: 768px) {
+  .header-links {
+    font-size: 16px;
+  }
+}
+
+.header-link {
+  text-decoration: none;
+}
+
+.header-link:hover {
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* Main Content */
+.content-container {
+  max-width: 90% !important;
+  padding: 2rem 0;
+}
+
+@media (max-width: 768px) {
+  .content-container {
+    max-width: 100% !important;
+  }
+}
+
+
+.main-title {
+  text-align: center;
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: 900;
+  max-width: 1200px;
+  line-height: 1.4;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .main-title {
+    font-size: 24px;
+  }
+}
+
+/* Pixelated Creature */
+.creature-container {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #333333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.creature {
+  width: 40px;
+  height: 40px;
+  background-color: #00ff88;
+  border-radius: 4px;
+  position: relative;
+  animation: pixelBounce 2s ease-in-out infinite;
+}
+
+.creature-eye {
+  position: absolute;
+  top: 8px;
+  width: 4px;
+  height: 4px;
+  background-color: #0a0a0a;
+  border-radius: 50%;
+}
+
+.creature-eye.left {
+  left: 8px;
+}
+
+.creature-eye.right {
+  right: 8px;
+}
+
+/* Controls */
+.controls-container {
+  width: 100%;
+  max-width: 28rem;
+  padding: 0 1rem;
+}
+
+.search-input {
+  background-color: #1a1a1a;
+  border-color: #333333;
+  border-width: 1px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 900;
+  color: #ffffff;
+  min-width: 250px;
+  height: 44px;
+}
+
+.search-input::placeholder {
+  color: #666666;
+}
+
+.search-input:focus {
+  border-color: #ffffff;
+  box-shadow: 0 0 0 1px #ffffff;
+}
+
+.search-input:hover {
+  border-color: #555555;
+}
+
+@media (min-width: 768px) {
+  .search-input {
+    font-size: 16px;
+    min-width: 300px;
+    height: 48px;
+  }
+}
+
+/* Dropdown */
+.employee-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #1a1a1a;
+  border: 1px solid #333333;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+
+.employee-item {
+  padding: 0.75rem;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.employee-item:hover {
+  background-color: #333333;
+}
+
+/* Buttons */
+.guess-button {
+  background-color: #ffffff;
+  color: #0a0a0a;
+  border-color: transparent;
+  border-width: 1px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 900;
+  height: 44px;
+  padding: 0 1rem;
+}
+
+.guess-button:hover {
+  background-color: #f0f0f0;
+}
+
+.guess-button:active {
+  background-color: #e0e0e0;
+}
+
+.guess-button:disabled {
+  background-color: #333333;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+@media (min-width: 768px) {
+  .guess-button {
+    font-size: 16px;
+    height: 48px;
+    padding: 0 1.5rem;
+  }
+}
+
+.hint-button, .new-game-button {
+  background-color: transparent;
+  color: #888888;
+  border-color: #333333;
+  border-width: 1px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 900;
+  height: 44px;
+  padding: 0 1rem;
+}
+
+.hint-button:hover, .new-game-button:hover {
+  background-color: #1a1a1a;
+  border-color: #555555;
+}
+
+.hint-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (min-width: 768px) {
+  .hint-button, .new-game-button {
+    font-size: 16px;
+    height: 48px;
+    padding: 0 1.5rem;
+  }
+}
+
+.share-button {
+  background-color: #ffffff;
+  color: #0a0a0a;
+  border-color: transparent;
+  border-width: 1px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 900;
+  height: 40px;
+  padding: 0 1rem;
+  margin-left: auto;
+}
+
+.share-button:hover {
+  background-color: #f0f0f0;
+}
+
+.share-button:active {
+  background-color: #e0e0e0;
+}
+
+/* Alerts */
+.alert {
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  border: 1px solid #333333;
+  color: #ffffff;
+}
+
+.alert-title {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.alert-title.large {
+  font-size: 18px;
+}
+
+.alert-description {
+  color: #888888;
+  font-size: 16px;
+  font-weight: 900;
+  margin-left: 0.5rem;
+}
+
+.alert-icon.success {
+  color: #00ff88;
+}
+
+.alert-icon.error {
+  color: #ff4444;
+}
+
+.alert-icon.info {
+  color: #888888;
+}
+
+/* Guess Results */
+.guesses-container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 1rem;
+}
+
+.guesses-title {
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 18px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .guesses-title {
+    font-size: 20px;
+  }
+}
+
+
+.guess-title {
+  font-weight: 900;
+  margin-bottom: 0.75rem;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  .guess-title {
+    margin-bottom: 1rem;
+    font-size: 18px;
+  }
+}
+
+.guess-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0.25rem;
+  font-weight: 900;
+}
+
+@media (min-width: 768px) {
+  .guess-grid {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+.guess-item {
+  border-radius: 6px;
+  padding: 0.25rem;
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .guess-item {
+    border-radius: 8px;
+    padding: 0.75rem;
+  }
+}
+
+.guess-item-label {
+  font-size: 10px;
+  color: #0a0a0a;
+  margin-bottom: 0.125rem;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .guess-item-label {
+    font-size: 14px;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.guess-item-value {
+  font-size: 10px;
+  color: #0a0a0a;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .guess-item-value {
+    font-size: 14px;
+  }
+}
+
+/* Feedback Colors */
+.feedback-green {
+  background-color: #00ff88;
+}
+
+.feedback-yellow {
+  background-color: #ffaa00;
+}
+
+.feedback-red {
+  background-color: #ff4444;
+}
+
+.feedback-orange {
+  background-color: #ff8800;
+}
+
+.feedback-purple {
+  background-color: #aa44ff;
+}
+
+.feedback-gray {
+  background-color: #333333;
+}
+
+/* Stats */
+.stats-container {
+  text-align: center;
+  color: #888888;
+  font-size: 14px;
+  font-weight: 900;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .stats-container {
+    font-size: 16px;
+  }
+}
+
+.stats-text {
+  margin-bottom: 0.5rem;
+}

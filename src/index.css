@@ -11,16 +11,16 @@
 
 /* Make all text elements bold by default */
 * {
-  font-weight: extrabold !important;
+  font-weight: 900 !important;
 }
 
 /* Override for specific elements that need different weights */
 h1, h2, h3, h4, h5, h6 {
-  font-weight: extrabold !important;
+  font-weight: 900 !important;
 }
 
 button, input, textarea {
-  font-weight: extrabold !important;
+  font-weight: 900 !important;
 }
 
 /* Custom scrollbar */

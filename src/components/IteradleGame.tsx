@@ -24,6 +24,7 @@ import {
   getHint,
 } from "../utils/gameLogic";
 import { generateShareableResult, copyToClipboard } from "../utils/shareUtils";
+import "./IteradleGame.css";
 
 const IteradleGame: React.FC = () => {
   const [iterators, setIterators] = useState<Iterator[]>([]);
@@ -252,182 +253,71 @@ const IteradleGame: React.FC = () => {
 
   if (loading) {
     return (
-      <Box
-        minH="100vh"
-        bg="#0a0a0a"
-        fontFamily='"Inter", -apple-system, BlinkMacSystemFont, sans-serif'
-        color="#ffffff"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Text fontSize="18px" color="#888888" fontWeight="extrabold">
-          Loading game...
-        </Text>
+      <Box className="loading-container">
+        <Text className="loading-text">Loading game...</Text>
       </Box>
     );
   }
 
   return (
-    <Box
-      minH="100vh"
-      bg="#0a0a0a"
-      fontFamily='"Inter", -apple-system, BlinkMacSystemFont, sans-serif'
-      fontSize="16px"
-      color="#ffffff"
-    >
+    <Box className="main-container" w="100%">
       {/* Header Navigation */}
-      <Box
-        w="full"
-        borderBottom="1px solid #333333"
-        py={4}
-        px={{ base: 4, md: 8 }}
-      >
-        <Container maxW="container.xl">
+      <Box className="header">
+        <Container maxW="100%">
           <HStack justify="space-between" align="center">
-            <Text
-              fontSize={{ base: "20px", md: "24px" }}
-              fontWeight="extrabold"
-              color="#ffffff"
-            >
-              Iteradle
-            </Text>
-            <HStack
-              spacing={{ base: 4, md: 8 }}
-              fontSize={{ base: "14px", md: "16px" }}
-              fontWeight="extrabold"
-              color="#888888"
-              display={{ base: "none", lg: "flex" }}
-            >
+            <Text className="header-title">Iteradle</Text>
+            <HStack className="header-links" spacing={{ base: 4, md: 8 }}>
               <a
                 href="https://iterate.no/"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ textDecoration: "none" }}
+                className="header-link"
               >
-                <Text _hover={{ color: "#ffffff", cursor: "pointer" }}>
-                  Om oss
-                </Text>
+                <Text>Om oss</Text>
               </a>
             </HStack>
           </HStack>
         </Container>
       </Box>
 
-      <Container maxW="90%" py={8}>
+      <Container className="content-container">
         <VStack spacing={8}>
           <VStack spacing={6} align="center">
             {/* Pixelated Creature */}
-            <Box
-              w="80px"
-              h="80px"
-              borderRadius="50%"
-              border="2px solid #333333"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              mb={4}
-              position="relative"
-              overflow="hidden"
-            >
+            <Box className="creature-container">
               {/* Simple pixelated creature */}
-              <Box
-                w="40px"
-                h="40px"
-                bg="#00ff88"
-                borderRadius="4px"
-                position="relative"
-                animation="pixelBounce 2s ease-in-out infinite"
-              >
+              <Box className="creature">
                 {/* Eyes */}
-                <Box
-                  position="absolute"
-                  top="8px"
-                  left="8px"
-                  w="4px"
-                  h="4px"
-                  bg="#0a0a0a"
-                  borderRadius="50%"
-                />
-                <Box
-                  position="absolute"
-                  top="8px"
-                  right="8px"
-                  w="4px"
-                  h="4px"
-                  bg="#0a0a0a"
-                  borderRadius="50%"
-                />
+                <Box className="creature-eye left" />
+                <Box className="creature-eye right" />
               </Box>
             </Box>
 
-            <Text
-              textAlign="center"
-              fontSize={{ base: "20px", md: "24px" }}
-              color="#ffffff"
-              fontWeight="extrabold"
-              maxW="1200px"
-              lineHeight="1.4"
-              px={4}
-            >
+            <Text className="main-title">
               Guess the Iterate employee! Use hints wisely.
             </Text>
           </VStack>
 
           {/* Controls */}
-          <VStack spacing={4} w="full" maxW="md" px={4}>
+          <VStack className="controls-container" spacing={4}>
             <HStack spacing={4} w="full">
               <Box position="relative" w="full">
                 <Input
+                  className="search-input"
                   placeholder="Type to search employees..."
                   value={searchQuery}
                   onChange={handleSearchChange}
                   onFocus={() => setIsOpen(true)}
                   onBlur={() => setTimeout(() => setIsOpen(false), 200)}
                   isDisabled={gameState.gameWon || gameState.gameLost}
-                  bg="#1a1a1a"
-                  borderColor="#333333"
-                  borderWidth="1px"
-                  borderRadius="8px"
-                  fontSize={{ base: "14px", md: "16px" }}
-                  fontWeight="extrabold"
-                  color="#ffffff"
-                  _placeholder={{ color: "#666666" }}
-                  _focus={{
-                    borderColor: "#ffffff",
-                    boxShadow: "0 0 0 1px #ffffff",
-                  }}
-                  _hover={{ borderColor: "#555555" }}
-                  minW={{ base: "250px", md: "300px" }}
-                  h={{ base: "44px", md: "48px" }}
                 />
                 {isOpen && filteredEmployees.length > 0 && (
-                  <Box
-                    position="absolute"
-                    top="100%"
-                    left={0}
-                    right={0}
-                    zIndex={1000}
-                    bg="#1a1a1a"
-                    border="1px solid #333333"
-                    borderTop="none"
-                    borderRadius="0 0 8px 8px"
-                    maxH="200px"
-                    overflowY="auto"
-                    boxShadow="0 8px 32px rgba(0,0,0,0.5)"
-                  >
+                  <Box className="employee-dropdown">
                     {filteredEmployees.slice(0, 10).map((iterator) => (
                       <Box
                         key={iterator.name}
-                        px={3}
-                        py={3}
-                        cursor="pointer"
-                        _hover={{ bg: "#333333" }}
+                        className="employee-item"
                         onClick={() => handleEmployeeSelect(iterator.name)}
-                        fontSize="16px"
-                        fontWeight="extrabold"
-                        color="#ffffff"
-                        fontFamily='"Inter", -apple-system, BlinkMacSystemFont, sans-serif'
                       >
                         {iterator.name}
                       </Box>
@@ -436,25 +326,10 @@ const IteradleGame: React.FC = () => {
                 )}
               </Box>
               <Button
+                className="guess-button"
                 onClick={() => {
                   handleGuess();
                   setSearchQuery("");
-                }}
-                bg="#ffffff"
-                color="#0a0a0a"
-                borderColor="transparent"
-                borderWidth="1px"
-                borderRadius="8px"
-                fontSize={{ base: "14px", md: "16px" }}
-                fontWeight="extrabold"
-                h={{ base: "44px", md: "48px" }}
-                px={{ base: 4, md: 6 }}
-                _hover={{ bg: "#f0f0f0" }}
-                _active={{ bg: "#e0e0e0" }}
-                _disabled={{
-                  bg: "#333333",
-                  color: "#666666",
-                  cursor: "not-allowed",
                 }}
                 isDisabled={
                   !gameState.currentGuess.trim() ||
@@ -469,18 +344,8 @@ const IteradleGame: React.FC = () => {
             {/* Hints */}
             <HStack spacing={4} w="full" justify="center" flexWrap="wrap">
               <Button
+                className="hint-button"
                 onClick={handleHint}
-                bg="transparent"
-                color="#888888"
-                borderColor="#333333"
-                borderWidth="1px"
-                borderRadius="8px"
-                fontSize={{ base: "14px", md: "16px" }}
-                fontWeight="extrabold"
-                h={{ base: "44px", md: "48px" }}
-                px={{ base: 4, md: 6 }}
-                _hover={{ bg: "#1a1a1a", borderColor: "#555555" }}
-                _disabled={{ opacity: 0.5, cursor: "not-allowed" }}
                 isDisabled={
                   gameState.hintsUsed >= gameState.maxHints ||
                   gameState.gameWon ||
@@ -489,46 +354,17 @@ const IteradleGame: React.FC = () => {
               >
                 Get Hint ({gameState.maxHints - gameState.hintsUsed} left)
               </Button>
-              <Button
-                onClick={resetGame}
-                bg="transparent"
-                color="#888888"
-                borderColor="#333333"
-                borderWidth="1px"
-                borderRadius="8px"
-                fontSize={{ base: "14px", md: "16px" }}
-                fontWeight="extrabold"
-                h={{ base: "44px", md: "48px" }}
-                px={{ base: 4, md: 6 }}
-                _hover={{ bg: "#1a1a1a", borderColor: "#555555" }}
-              >
+              <Button className="new-game-button" onClick={resetGame}>
                 New Game
               </Button>
             </HStack>
           </VStack>
 
           {currentHint && (
-            <Alert
-              status="info"
-              borderRadius="8px"
-              bg="#1a1a1a"
-              border="1px solid #333333"
-              color="#ffffff"
-            >
-              <AlertIcon color="#888888" />
-              <AlertTitle
-                color="#ffffff"
-                fontSize="16px"
-                fontWeight="extrabold"
-              >
-                Hint:
-              </AlertTitle>
-              <AlertDescription
-                ml={2}
-                color="#888888"
-                fontSize="16px"
-                fontWeight="extrabold"
-              >
+            <Alert className="alert" status="info">
+              <AlertIcon className="alert-icon info" />
+              <AlertTitle className="alert-title">Hint:</AlertTitle>
+              <AlertDescription className="alert-description">
                 {currentHint}
               </AlertDescription>
             </Alert>
@@ -536,46 +372,24 @@ const IteradleGame: React.FC = () => {
 
           {(gameState.gameWon || gameState.gameLost) && (
             <Alert
+              className="alert"
               status={gameState.gameWon ? "success" : "error"}
-              borderRadius="8px"
-              bg="#1a1a1a"
-              border="1px solid #333333"
-              color="#ffffff"
             >
-              <AlertIcon color={gameState.gameWon ? "#00ff88" : "#ff4444"} />
-              <AlertTitle
-                color="#ffffff"
-                fontSize="18px"
-                fontWeight="extrabold"
-              >
+              <AlertIcon
+                className={`alert-icon ${
+                  gameState.gameWon ? "success" : "error"
+                }`}
+              />
+              <AlertTitle className="alert-title large">
                 {gameState.gameWon ? "You Won!" : "Game Over!"}
               </AlertTitle>
-              <AlertDescription
-                ml={2}
-                color="#888888"
-                fontSize="16px"
-                fontWeight="extrabold"
-              >
+              <AlertDescription className="alert-description">
                 {gameState.gameWon
                   ? `Correct! The answer was ${gameState.targetIterator?.name}.`
                   : `The correct answer was ${gameState.targetIterator?.name}.`}
               </AlertDescription>
               {(gameState.gameWon || gameState.gameLost) && (
-                <Button
-                  onClick={handleShare}
-                  bg="#ffffff"
-                  color="#0a0a0a"
-                  borderColor="transparent"
-                  borderWidth="1px"
-                  borderRadius="8px"
-                  fontSize="16px"
-                  fontWeight="extrabold"
-                  h="40px"
-                  px={4}
-                  ml="auto"
-                  _hover={{ bg: "#f0f0f0" }}
-                  _active={{ bg: "#e0e0e0" }}
-                >
+                <Button className="share-button" onClick={handleShare}>
                   Share Results
                 </Button>
               )}
@@ -583,43 +397,15 @@ const IteradleGame: React.FC = () => {
           )}
 
           {guessResults.length > 0 && (
-            <Box w="full" maxW="1200px" px={4}>
-              <Heading
-                size="md"
-                mb={6}
-                color="#ffffff"
-                fontWeight="extrabold"
-                fontSize={{ base: "18px", md: "20px" }}
-                textAlign="center"
-              >
-                Your Guesses:
-              </Heading>
+            <Box className="guesses-container">
+              <Heading className="guesses-title">Your Guesses:</Heading>
               <VStack spacing={{ base: 3, md: 4 }} align="stretch">
                 {guessResults.map((result, index) => (
-                  <Box
-                    key={index}
-                    p={{ base: 3, md: 6 }}
-                    border="1px solid #333333"
-                    borderRadius="12px"
-                    bg="#1a1a1a"
-                    transition="all 0.2s ease"
-                    _hover={{ bg: "#222222" }}
-                  >
-                    <Text
-                      fontWeight="extrabold"
-                      mb={{ base: 3, md: 4 }}
-                      color="#ffffff"
-                      fontSize={{ base: "16px", md: "18px" }}
-                    >
+                  <Box key={index} className="guess-card">
+                    <Text className="guess-title">
                       Guess {index + 1}: {gameState.guesses[index]}
                     </Text>
-                    <Grid
-                      templateColumns={{
-                        base: "repeat(2, 1fr)",
-                        md: "repeat(auto-fit, minmax(150px, 1fr))",
-                      }}
-                      gap={{ base: 3, md: 6 }}
-                    >
+                    <Grid className="guess-grid">
                       {Object.entries(result.feedback).map(([key, value]) => {
                         // Find the guessed iterator to get the actual values
                         const guessedIterator = iterators.find(
@@ -663,31 +449,16 @@ const IteradleGame: React.FC = () => {
                           displayValue = getFeedbackDisplay(value);
                         }
 
+                        const feedbackColorClass = `feedback-${getFeedbackColor(
+                          value as any
+                        )}`;
+
                         return (
                           <GridItem
                             key={key}
-                            bg={
-                              getFeedbackColor(value as any) === "green"
-                                ? "#00ff88"
-                                : getFeedbackColor(value as any) === "yellow"
-                                ? "#ffaa00"
-                                : getFeedbackColor(value as any) === "red"
-                                ? "#ff4444"
-                                : getFeedbackColor(value as any) === "orange"
-                                ? "#ff8800"
-                                : getFeedbackColor(value as any) === "purple"
-                                ? "#aa44ff"
-                                : "#333333"
-                            }
-                            borderRadius="8px"
-                            p={{ base: 2, md: 3 }}
+                            className={`guess-item ${feedbackColorClass}`}
                           >
-                            <Text
-                              fontSize={{ base: "12px", md: "14px" }}
-                              color="#0a0a0a"
-                              mb={{ base: 1, md: 2 }}
-                              fontWeight="extrabold"
-                            >
+                            <Text className="guess-item-label">
                               {key
                                 .replace(/([A-Z])/g, " $1")
                                 .trim()
@@ -695,11 +466,7 @@ const IteradleGame: React.FC = () => {
                                 .replace(/^./, (c) => c.toUpperCase())}
                               :
                             </Text>
-                            <Text
-                              fontSize={{ base: "12px", md: "14px" }}
-                              color="#0a0a0a"
-                              fontWeight="extrabold"
-                            >
+                            <Text className="guess-item-value">
                               {displayValue} {getFeedbackDisplay(value)}
                             </Text>
                           </GridItem>
@@ -712,14 +479,8 @@ const IteradleGame: React.FC = () => {
             </Box>
           )}
 
-          <Box
-            textAlign="center"
-            color="#888888"
-            fontSize={{ base: "14px", md: "16px" }}
-            fontWeight="extrabold"
-            px={4}
-          >
-            <Text mb={2}>
+          <Box className="stats-container">
+            <Text className="stats-text">
               Guesses: {gameState.guesses.length}/{gameState.maxGuesses}
             </Text>
             <Text>
