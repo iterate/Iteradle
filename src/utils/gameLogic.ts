@@ -1,7 +1,6 @@
 import type { Iterator, GuessResult } from '../types/Iterator';
 
 export const generateRandomIterator = (iterators: Iterator[]): Iterator => {
-  // Get current date in YYYY-MM-DD format
   const today = new Date().toISOString().split('T')[0];
   
   // Create a simple hash from the date string
